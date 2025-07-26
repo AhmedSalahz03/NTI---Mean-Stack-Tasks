@@ -4,15 +4,15 @@ const path = require('path');
 const cartPath = path.join(__dirname, '../data/cart.json');
 
 function removeFromCart(productId) {
-    const cart = JSON.parse(fs.readFileSync(cartPath));
-    const index = cart.findIndex(item => item.id === productId);
-    if (index === -1) {
-        console.log('Product not found in cart.');
+    const cartItems = JSON.parse(fs.readFileSync(cartPath));
+    const itemIndex = cartItems.findIndex(product => product.id === productId);
+    if (itemIndex === -1) {
+        console.log('No such product in your cart.');
         return;
     }
-    const removed = cart.splice(index, 1)[0];
-    fs.writeFileSync(cartPath, JSON.stringify(cart, null, 2));
-    console.log(`Removed ${removed.name} from cart.`);
+    const removedProduct = cartItems.splice(itemIndex, 1)[0];
+    fs.writeFileSync(cartPath, JSON.stringify(cartItems, null, 2));
+    console.log(`Product '${removedProduct.name}' has been removed from your cart.`);
 }
 
 module.exports = removeFromCart;

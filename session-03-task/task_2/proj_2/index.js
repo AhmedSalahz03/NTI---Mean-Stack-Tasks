@@ -4,14 +4,13 @@ const listCart = require('./modules/listCart');
 const calculateTotal = require('./modules/calculateTotal');
 
 // Example usage:
-addToCart(1); // Laptop
-addToCart(2); // Phone
-addToCart(3); // Headphones
+addToCart(1); // Add Laptop
+addToCart(2); // Add Phone
 
-listCart();
+listCart(); // Show cart contents
 
 removeFromCart(2); // Remove Phone
 
-listCart();
+listCart(); // Show updated cart
 
-calculateTotal();
+calculateTotal(); // Show total price

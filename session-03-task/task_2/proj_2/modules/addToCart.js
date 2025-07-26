@@ -5,16 +5,16 @@ const productsPath = path.join(__dirname, '../data/products.json');
 const cartPath = path.join(__dirname, '../data/cart.json');
 
 function addToCart(productId) {
-    const products = JSON.parse(fs.readFileSync(productsPath));
-    const cart = JSON.parse(fs.readFileSync(cartPath));
-    const product = products.find(p => p.id === productId);
-    if (!product) {
-        console.log('Product not found.');
+    const productsList = JSON.parse(fs.readFileSync(productsPath));
+    const cartItems = JSON.parse(fs.readFileSync(cartPath));
+    const selectedProduct = productsList.find(item => item.id === productId);
+    if (!selectedProduct) {
+        console.log('No product found with the given ID.');
         return;
     }
-    cart.push(product);
-    fs.writeFileSync(cartPath, JSON.stringify(cart, null, 2));
-    console.log(`Added ${product.name} to cart.`);
+    cartItems.push(selectedProduct);
+    fs.writeFileSync(cartPath, JSON.stringify(cartItems, null, 2));
+    console.log(`Product '${selectedProduct.name}' has been added to your cart.`);
 }
 
 module.exports = addToCart;

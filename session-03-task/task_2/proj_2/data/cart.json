@@ -8,5 +8,15 @@
     "id": 3,
     "name": "Headphones",
     "price": 1200
+  },
+  {
+    "id": 1,
+    "name": "Laptop",
+    "price": 15000
+  },
+  {
+    "id": 1,
+    "name": "Laptop",
+    "price": 20000
   }
 ]

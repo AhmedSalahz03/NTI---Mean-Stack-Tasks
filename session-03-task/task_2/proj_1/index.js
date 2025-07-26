@@ -5,19 +5,19 @@ const listContacts = require('./modules/listContacts');
 
 // Example usage:
 // Add contacts
-addContact('Ahmed', 'ahmed@example.com');
-addContact('Mohamed', 'mohamed@example.com');
-addContact('Youssef', 'youssef@example.com');
+addContact('Zeyad', 'zeyad@example.com');
+addContact('Mohamed', 'moh@example.com');
+addContact('Laila', 'laila@example.com');
 
 // List all contacts
 listContacts();
 
 // Search contacts
-searchContact('ahmed');
+searchContact('laila');
 searchContact('mohamed');
 
 // Remove a contact
-removeContact(2); 
+removeContact(1); 
 
 // List again
 listContacts();

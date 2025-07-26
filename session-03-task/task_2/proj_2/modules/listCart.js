@@ -4,14 +4,14 @@ const path = require('path');
 const cartPath = path.join(__dirname, '../data/cart.json');
 
 function listCart() {
-    const cart = JSON.parse(fs.readFileSync(cartPath));
-    if (cart.length === 0) {
-        console.log('Cart is empty.');
+    const cartItems = JSON.parse(fs.readFileSync(cartPath));
+    if (cartItems.length === 0) {
+        console.log('Your shopping cart is currently empty.');
         return;
     }
-    console.log('Cart items:');
-    cart.forEach(item => {
-        console.log(`- ${item.name} (ID: ${item.id}) - ${item.price} EGP`);
+    console.log('Items in your cart:');
+    cartItems.forEach(product => {
+        console.log(`• ${product.name} [ID: ${product.id}] - Price: ${product.price} EGP`);
     });
 }
 

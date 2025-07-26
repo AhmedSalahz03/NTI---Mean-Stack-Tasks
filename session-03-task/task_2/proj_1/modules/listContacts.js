@@ -3,12 +3,12 @@ const path = require('path');
 const contactsPath = path.join(__dirname, '../data/contacts.json');
 
 function listContacts() {
-    const contacts = JSON.parse(fs.readFileSync(contactsPath, 'utf8'));
-    if (contacts.length === 0) {
-        console.log('No contacts available.');
+    const contactList = JSON.parse(fs.readFileSync(contactsPath, 'utf8'));
+    if (contactList.length === 0) {
+        console.log('Your phonebook is empty.');
     } else {
-        console.log('All Contacts:');
-        contacts.forEach(c => console.log(`- ${c.id}: ${c.name} (${c.email})`));
+        console.log('Contacts in your phonebook:');
+        contactList.forEach(c => console.log(`• ${c.id}: ${c.name} <${c.email}>`));
     }
 }
 
