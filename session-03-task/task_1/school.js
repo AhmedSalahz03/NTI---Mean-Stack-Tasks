@@ -36,24 +36,24 @@ class Person {
 class Principal extends Person {
     constructor(name, email, id) {
         super(name, email, id);
-        this.members = [];
+        this.schoolMembers = [];
     }
     addMember(member) {
-        this.members.push(member);
-        console.log(`Principal added member: ${member.name}`);
+        this.schoolMembers.push(member);
+        console.log(`Principal registered: ${member.name}`);
     }
     removeMember(memberId) {
-        this.members = this.members.filter(m => m.id !== memberId);
-        console.log(`Principal removed member with ID: ${memberId}`);
+        this.schoolMembers = this.schoolMembers.filter(m => m.id !== memberId);
+        console.log(`Principal deleted member with ID: ${memberId}`);
     }
     listMembers() {
-        console.log('School Members:');
-        this.members.forEach(m => {
-            console.log(`- ${m.name} (${m.constructor.name})`);
+        console.log('Current School Members:');
+        this.schoolMembers.forEach(m => {
+            console.log(`* ${m.name} [${m.constructor.name}]`);
         });
     }
     describeRole() {
-        console.log(`${this.name} is the principal and manages the school.`);
+        console.log(`${this.name} is the principal and oversees all operations.`);
     }
 }
 
@@ -61,54 +61,54 @@ class Teacher extends Person {
     constructor(name, email, id, subject) {
         super(name, email, id);
         this.subject = subject;
-        this.gradedStudents = [];
+        this.evaluatedStudents = [];
     }
     gradeStudent(studentName, grade) {
-        this.gradedStudents.push({ studentName, grade });
-        console.log(`Teacher ${this.name} graded ${studentName}: ${grade}`);
+        this.evaluatedStudents.push({ studentName, grade });
+        console.log(`Teacher ${this.name} evaluated ${studentName} with grade: ${grade}`);
     }
     listGradedStudents() {
-        console.log(`Graded Students by ${this.name}:`);
-        this.gradedStudents.forEach(gs => {
-            console.log(`- ${gs.studentName}: ${gs.grade}`);
+        console.log(`Students evaluated by ${this.name}:`);
+        this.evaluatedStudents.forEach(gs => {
+            console.log(`* ${gs.studentName}: ${gs.grade}`);
         });
     }
     describeRole() {
-        console.log(`${this.name} teaches ${this.subject}.`);
+        console.log(`${this.name} instructs the subject: ${this.subject}.`);
     }
 }
 
 class Student extends Person {
     constructor(name, email, id) {
         super(name, email, id);
-        this.subjects = [];
+        this.enrolledSubjects = [];
     }
     enrollSubject(subject) {
-        this.subjects.push(subject);
-        console.log(`${this.name} enrolled in ${subject}.`);
+        this.enrolledSubjects.push(subject);
+        console.log(`${this.name} has joined the subject: ${subject}.`);
     }
     viewSubjects() {
-        console.log(`Subjects for ${this.name}:`);
-        this.subjects.forEach(s => {
-            console.log(`- ${s}`);
+        console.log(`Subjects taken by ${this.name}:`);
+        this.enrolledSubjects.forEach(s => {
+            console.log(`* ${s}`);
         });
     }
     describeRole() {
-        console.log(`${this.name} is a student and attends classes.`);
+        console.log(`${this.name} is a student and participates in school lessons.`);
     }
 }
 
 // Step 5: Simulate Actions
-const principal = new Principal('Ahmed', 'ahmed@school.com', 1);
-const teacher = new Teacher('Mohamed', 'mohamed@school.com', 2, 'Mathematics');
-const student = new Student('Youssef', 'youssef@school.com', 3);
+const principal = new Principal('Hassan', 'hassan@school.com', 1);
+const teacher = new Teacher('Fatma', 'fatma@school.com', 2, 'Physics');
+const student = new Student('Omar', 'omar@school.com', 3);
 
 principal.addMember(teacher);
 principal.addMember(student);
 
-teacher.gradeStudent(student.name, 'A');
-student.enrollSubject('Mathematics');
-student.enrollSubject('Science');
+teacher.gradeStudent(student.name, 'B+');
+student.enrollSubject('Physics');
+student.enrollSubject('Art');
 
-const allMembers = [principal, teacher, student];
-allMembers.forEach(m => m.describeRole());
+const schoolCommunity = [principal, teacher, student];
+schoolCommunity.forEach(member => member.describeRole());
